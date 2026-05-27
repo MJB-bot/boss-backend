@@ -9,12 +9,19 @@ on:
 env:
   REGISTRY: ghcr.io
 
+# Required for GHCR push permission
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   # ============================================
   # Test
   # ============================================
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,12 +43,15 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: success()
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Docker enforces lowercase image names
+      # GHCR enforces lowercase; ${OWNER,,} converts MJB-bot → mjb-bot
       - name: Normalize image name
         run: |
           OWNER="${{ github.repository_owner }}"
@@ -86,9 +96,10 @@ jobs:
           script_stop: true
           script: |
             set -e
-            echo "=== Pulling latest image ==="
+            IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+            echo "=== Pulling ${IMAGE} ==="
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            docker pull "${IMAGE}"
 
             echo "=== Restarting container ==="
             cd /opt/app
