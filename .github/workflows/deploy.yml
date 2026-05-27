@@ -7,9 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  # Image registry
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/app-server
 
 jobs:
   # ============================================
@@ -37,12 +35,17 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    # Skip test failure? No — deploy only if tests pass
     if: success()
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Docker enforces lowercase image names
+      - name: Normalize image name
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          echo "IMAGE_NAME=${OWNER,,}/app-server" >> $GITHUB_ENV
 
       # ----------------------------------------
       # Login to GitHub Container Registry
