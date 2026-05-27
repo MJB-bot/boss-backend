@@ -1,0 +1,29 @@
+# ============================================
+# Exclude everything by default
+# ============================================
+**/*
+
+# ============================================
+# Include only what's needed for build
+# ============================================
+!src/**
+!pom.xml
+!.mvn/**
+!mvnw
+!mvnw.cmd
+
+# ============================================
+# Exclude noise files even in src
+# ============================================
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+target/
+*.class
+*.log
+.env
+.env.*
+.git/
+.gitignore

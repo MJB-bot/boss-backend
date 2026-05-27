@@ -1,0 +1,80 @@
+# ============================================
+# IDE
+# ============================================
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+
+# ============================================
+# OS
+# ============================================
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# ============================================
+# Java / Maven
+# ============================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# ============================================
+# Compiled
+# ============================================
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ============================================
+# Logs / Temp
+# ============================================
+*.log
+logs/
+*.tmp
+*.temp
+hs_err_pid*
+
+# ============================================
+# Environment / Secrets
+# ============================================
+.env
+.env.*
+!.env.example
+application-local.yml
+application-*.yml
+!application.yml
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+credentials.json
+
+# ============================================
+# Uploads / Runtime
+# ============================================
+uploads/
+*.pid
