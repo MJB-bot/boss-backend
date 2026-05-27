@@ -4,7 +4,7 @@
 # ============================================
 services:
   app-server:
-    image: ghcr.io/${GITHUB_REPO_OWNER:-bosszhipin}/app-server:latest
+    image: ghcr.io/${GITHUB_REPO_OWNER:-MJB-bot}/app-server:latest
     container_name: app-server
     restart: unless-stopped
     ports:

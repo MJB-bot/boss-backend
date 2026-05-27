@@ -8,7 +8,7 @@ set -e
 # ---- Config ----
 REGISTRY="${REGISTRY:-ghcr.io}"
 IMAGE="${IMAGE:-app-server}"
-GITHUB_REPO_OWNER="${GITHUB_REPO_OWNER:-bosszhipin}"
+GITHUB_REPO_OWNER="${GITHUB_REPO_OWNER:-MJB-bot}"
 FULL_IMAGE="${REGISTRY}/${GITHUB_REPO_OWNER}/${IMAGE}:latest"
 COMPOSE_FILE="/opt/app/docker-compose.yml"
 
